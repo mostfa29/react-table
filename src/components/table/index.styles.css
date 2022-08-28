@@ -1,0 +1,15 @@
+.table__container{
+   display: flex;
+   justify-content: center;
+   padding: 4vh;
+}
+
+.table__custom_table{
+    background-color: white;
+    padding: 4vh 4vw;
+    border-radius: 20px;
+
+}
+
+
+
