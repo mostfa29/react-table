@@ -8,6 +8,7 @@ import {
   
 } from '@tanstack/react-table'
 import { employee_data } from '../../data/employeeData'
+import styled from 'styled-components'
 
 
 const fetchedData = employee_data
@@ -85,41 +86,41 @@ function Home() {
         getCoreRowModel:getCoreRowModel()
       })
   return (
-      <div>
-          <table>
+      <Container>
+          <Table>
         {/* table header columns */}    
-        <thead>
+        <thead style={{border:'none'}}>
           {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
+            <TableHeader key={headerGroup.id}>
               {headerGroup.headers.map(header => (
-                <th key={header.id}>
+                <TableHeaderElem key={header.id}>
                   {header.isPlaceholder
                     ? null
                     : flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-                </th>
+                </TableHeaderElem>
               ))}
-            </tr>
+            </TableHeader>
           ))}
         </thead>
 
          <tbody>
           {table.getRowModel().rows.map(row => (
-            <tr key={row.id}>
+            <TableBody key={row.id}>
               {row.getVisibleCells().map(cell => (
-                <td key={cell.id}>
+                <TableBodyElem key={cell.id}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
+                </TableBodyElem>
               ))}
-            </tr>
+            </TableBody>
           ))}
         </tbody>
 
          <tfoot>
           {table.getFooterGroups().map(footerGroup => (
-            <tr key={footerGroup.id}>
+            <TableFooter key={footerGroup.id}>
               {footerGroup.headers.map(header => (
                 <th key={header.id}>
                   {header.isPlaceholder
@@ -130,15 +131,52 @@ function Home() {
                       )}
                 </th>
               ))}
-            </tr>
+            </TableFooter>
           ))}
         </tfoot>
         
 
-          </table>
+          </Table>
       
-      </div>
+      </Container>
   )
 }
 
 export default Home
+
+const Container = styled.div`
+background-color: white;
+width: 70vw;
+display: flex;
+flex: 1;
+align-items: center;
+padding: 2vh 2vw;
+justify-content: center;
+border-radius: 30px;
+box-shadow: 1px -1px 26px 4px rgba(0,0,0,0.75);`
+const Table = styled.table`
+   border-collapse: collapse;
+`
+  
+
+const TableHeader = styled.tr`
+border: none;
+`
+const TableHeaderElem = styled.th`
+padding: 20px;
+
+`
+
+const TableBody = styled.tr`
+border-top: 1px solid;
+border-bottom: 1px solid;
+`
+const TableBodyElem = styled.td`
+padding: 20px;
+text-align: center;
+
+`
+
+const TableFooter = styled.tr`
+
+`

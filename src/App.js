@@ -3,7 +3,7 @@ import Home from './pages/home/index.tsx';
 
 function App() {
   return (
-    <div className="">
+    <div className="app__container">
      <Home/>
     </div>
   );
